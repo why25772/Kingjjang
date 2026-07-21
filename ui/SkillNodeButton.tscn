@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b41nnhy78a6mp"]
+
+[ext_resource type="Script" uid="uid://bn7nwh3yoro7d" path="res://script/SkillNodeButton.gd" id="1_bs53o"]
+[ext_resource type="Texture2D" uid="uid://ffwd3tjc2sdr" path="res://icon.svg" id="1_uj1ed"]
+
+[node name="SkillNodeButton" type="TextureButton" unique_id=1135885501]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0, -2.65)
+texture_normal = ExtResource("1_uj1ed")
+script = ExtResource("1_bs53o")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1845908346]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="." unique_id=1724039826]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="." unique_id=1041532863]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 2

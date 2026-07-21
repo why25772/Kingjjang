@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://mn0tkmao2l6c"]
+
+[ext_resource type="Script" uid="uid://cso6ha6uu123r" path="res://enemy.gd" id="1_tt7e2"]
+[ext_resource type="PackedScene" uid="uid://ckaqmv6s87eqq" path="res://XPOrb.tscn" id="2_2hac7"]
+[ext_resource type="Texture2D" uid="uid://ffwd3tjc2sdr" path="res://icon.svg" id="2_s7bn3"]
+[ext_resource type="Script" uid="uid://biuwuahrqe0h" path="res://script/HurtBox.gd" id="4_e6d4v"]
+[ext_resource type="Script" uid="uid://dst3xwqayk3b6" path="res://statcomponent.gd" id="4_rvmyp"]
+[ext_resource type="Script" uid="uid://rc5igmpsvlho" path="res://Stats/BaseStatResource.gd" id="5_rvmyp"]
+[ext_resource type="Script" uid="uid://dusfnr4ylo2kn" path="res://script/HealthComponent.gd" id="7_52xpa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mycd"]
+
+[sub_resource type="Resource" id="Resource_2nxwx"]
+script = ExtResource("5_rvmyp")
+metadata/_custom_type_script = "uid://rc5igmpsvlho"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7b7a"]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=288213873 groups=["Enemy"]]
+script = ExtResource("1_tt7e2")
+exp_reward = 2000
+xp_orb_scene = ExtResource("2_2hac7")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1554528249]
+texture = ExtResource("2_s7bn3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1385806508]
+shape = SubResource("BoxShape3D_7mycd")
+
+[node name="StatComponent" type="Node" parent="." unique_id=1346495957]
+script = ExtResource("4_rvmyp")
+base_stat = SubResource("Resource_2nxwx")
+
+[node name="HurtBox" type="Area3D" parent="." unique_id=1561658672 node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_e6d4v")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" unique_id=1919398707]
+shape = SubResource("BoxShape3D_g7b7a")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=981188265 node_paths=PackedStringArray("stat_component")]
+script = ExtResource("7_52xpa")
+stat_component = NodePath("../StatComponent")
+metadata/_custom_type_script = "uid://dusfnr4ylo2kn"

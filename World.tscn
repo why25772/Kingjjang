@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c0ocg7tt1jwdp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gyc6d"]
+
+[node name="World" type="Node3D" unique_id=27260965]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=793388485]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=5975345]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1321179458]
+mesh = SubResource("PlaneMesh_gyc6d")

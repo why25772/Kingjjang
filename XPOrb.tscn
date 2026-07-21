@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ckaqmv6s87eqq"]
+
+[ext_resource type="Script" uid="uid://cu4og8qykd6mb" path="res://XPOrb.gd" id="1_x6nxk"]
+[ext_resource type="Texture2D" uid="uid://ffwd3tjc2sdr" path="res://icon.svg" id="2_865k8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e6d4v"]
+
+[node name="XPOrb" type="Area3D" unique_id=1490059700]
+transform = Transform3D(2.051, 0, 0, 0, 2.051, 0, 0, 0, 2.051, 0, 0, 0)
+script = ExtResource("1_x6nxk")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1552192730]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+texture = ExtResource("2_865k8")
+
+[node name="DetectArea" type="Area3D" parent="." unique_id=1844374725]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectArea" unique_id=786700689]
+transform = Transform3D(2.0199997, 0, 0, 0, 2.0199997, 0, 0, 0, 2.0199997, 0, 0, 0)
+shape = SubResource("SphereShape3D_e6d4v")
+
+[node name="PickupArea" type="Area3D" parent="." unique_id=108636765]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea" unique_id=1345886567]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("SphereShape3D_e6d4v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackResource" format=3 uid="uid://m8kikxjg4cxp"]
+
+[ext_resource type="Script" uid="uid://dkxavaks1mdq0" path="res://Attacksystem/AttackResource.gd" id="1_cw5it"]
+[ext_resource type="PackedScene" uid="uid://bvmhe3cboj1el" path="res://hit_box.tscn" id="1_i1j54"]
+[ext_resource type="Resource" uid="uid://n2knjqbbclct" path="res://resources/AttackSkills/벅벅.tres" id="2_2dtph"]
+
+[resource]
+script = ExtResource("1_cw5it")
+attack_name = "대절단가로"
+ignore_defense = true
+hitbox_scene = ExtResource("1_i1j54")
+range = 1.5
+next_combo = ExtResource("2_2dtph")
+animation_name = &"벅벅"
+metadata/_custom_type_script = "uid://dkxavaks1mdq0"

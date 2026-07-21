@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttackResource" format=3 uid="uid://n2knjqbbclct"]
+
+[ext_resource type="PackedScene" uid="uid://bvmhe3cboj1el" path="res://hit_box.tscn" id="1_imbcr"]
+[ext_resource type="Script" uid="uid://dkxavaks1mdq0" path="res://Attacksystem/AttackResource.gd" id="1_rg6sh"]
+[ext_resource type="Resource" uid="uid://dbjkws634l82j" path="res://resources/AttackSkills/シシシシ.tres" id="2_ho7wr"]
+
+[resource]
+script = ExtResource("1_rg6sh")
+attack_name = "벅벅"
+description = "벅벅"
+hitbox_scene = ExtResource("1_imbcr")
+scale = Vector3(0.5, 0.5, 0.5)
+next_combo = ExtResource("2_ho7wr")
+hit_count = 4
+animation_name = &"벅벅"
+metadata/_custom_type_script = "uid://dkxavaks1mdq0"

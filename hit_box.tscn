@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bvmhe3cboj1el"]
+
+[ext_resource type="Script" uid="uid://btjx77s2ouhno" path="res://script/HitBox.gd" id="1_hmo53"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1j54"]
+
+[node name="HitBox" type="Area3D" unique_id=832429898]
+monitoring = false
+script = ExtResource("1_hmo53")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=256547011]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_i1j54")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

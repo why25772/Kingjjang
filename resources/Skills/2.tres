@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillNode" format=3 uid="uid://b2ieeu2jije3y"]
+
+[ext_resource type="Texture2D" uid="uid://ffwd3tjc2sdr" path="res://icon.svg" id="1_7cn4k"]
+[ext_resource type="Script" uid="uid://d3v4t0u80hn2j" path="res://script/SkillNode.gd" id="1_7nhml"]
+
+[resource]
+script = ExtResource("1_7nhml")
+id = "2"
+title = "attack"
+parents = Array[String](["1"])
+hp = 5
+icon = ExtResource("1_7cn4k")
+metadata/_custom_type_script = "uid://d3v4t0u80hn2j"

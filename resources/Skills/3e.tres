@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillNode" format=3 uid="uid://bnfh53x8y2fr1"]
+
+[ext_resource type="Script" uid="uid://d3v4t0u80hn2j" path="res://script/SkillNode.gd" id="1_2ykdb"]
+[ext_resource type="Texture2D" uid="uid://ffwd3tjc2sdr" path="res://icon.svg" id="1_i13g7"]
+
+[resource]
+script = ExtResource("1_2ykdb")
+id = "3"
+title = "으아아앙"
+parents = Array[String](["4"])
+max_level = 4
+icon = ExtResource("1_i13g7")
+metadata/_custom_type_script = "uid://d3v4t0u80hn2j"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackResource" format=3 uid="uid://dbjkws634l82j"]
+
+[ext_resource type="PackedScene" uid="uid://bvmhe3cboj1el" path="res://hit_box.tscn" id="1_mp33v"]
+[ext_resource type="Script" uid="uid://dkxavaks1mdq0" path="res://Attacksystem/AttackResource.gd" id="1_sh6um"]
+
+[resource]
+script = ExtResource("1_sh6um")
+attack_name = "シシシシ"
+power = 4.0
+hitbox_scene = ExtResource("1_mp33v")
+scale = Vector3(2, 2, 2)
+destroy_on_hit = false
+animation_name = &"벅벅"
+metadata/_custom_type_script = "uid://dkxavaks1mdq0"

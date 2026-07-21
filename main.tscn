@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://de5aliyhkjec0"]
+
+[ext_resource type="Script" uid="uid://lhruu8xxc51o" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c0ocg7tt1jwdp" path="res://World.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://chiy1phy0px64" path="res://EnemySpawner.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cyx8dmdhoosij" path="res://Player.tscn" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://ffwd3tjc2sdr" path="res://icon.svg" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cihe4s3orsajv" path="res://ui/hud.tscn" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://1xo8tfvjfeju" path="res://script/SkillTreeManager.gd" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://bn83twycho7u6" path="res://SkillTreeUI.tscn" id="9_efxa6"]
+
+[node name="Main" type="Node" unique_id=1055857800]
+script = ExtResource("1_h2yge")
+
+[node name="World" parent="." unique_id=27260965 instance=ExtResource("2_1bvp3")]
+
+[node name="Player" parent="." unique_id=638737757 instance=ExtResource("3_lquwl")]
+
+[node name="SkillTreeManager" type="Node" parent="." unique_id=1298354197]
+script = ExtResource("7_272bh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1019825562]
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="CanvasLayer" unique_id=643437563]
+anchors_preset = -1
+anchor_right = 0.333
+anchor_bottom = 0.528
+offset_left = -43.999996
+offset_top = 317.0
+offset_right = -217.89455
+offset_bottom = 161.63916
+scale = Vector2(1.831, 1.831)
+
+[node name="SkillButton" type="TextureButton" parent="CanvasLayer" unique_id=1543693548]
+anchors_preset = -1
+anchor_right = 0.125
+anchor_bottom = 0.125
+offset_right = -16.0
+offset_bottom = 47.0
+texture_normal = ExtResource("5_5vw27")
+
+[node name="SkillTreeUI" parent="CanvasLayer" unique_id=1474629145 instance=ExtResource("9_efxa6")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" parent="CanvasLayer" unique_id=1014970874 node_paths=PackedStringArray("player") instance=ExtResource("7_5vw27")]
+player = NodePath("../../Player")
+
+[node name="AttackButton" type="TextureButton" parent="CanvasLayer" unique_id=2138078047]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("5_5vw27")
+
+[node name="EnemySpawner" parent="." unique_id=878740514 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.515)
+
+[connection signal="pressed" from="CanvasLayer/SkillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/AttackButton" to="." method="_on_attack_button_pressed"]

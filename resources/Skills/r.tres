@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillNode" format=3 uid="uid://3h06pljtiau8"]
+
+[ext_resource type="Texture2D" uid="uid://ffwd3tjc2sdr" path="res://icon.svg" id="1_62euu"]
+[ext_resource type="Script" uid="uid://d3v4t0u80hn2j" path="res://script/SkillNode.gd" id="1_fyb7a"]
+
+[resource]
+script = ExtResource("1_fyb7a")
+id = "4"
+title = "뿡"
+parents = Array[String](["1"])
+cost = 0
+max_level = 3
+hp = -3
+speed = 3
+icon = ExtResource("1_62euu")
+metadata/_custom_type_script = "uid://d3v4t0u80hn2j"

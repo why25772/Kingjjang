@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://cyx8dmdhoosij"]
+
+[ext_resource type="Script" uid="uid://b76j3bcbiv0w1" path="res://Player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://ffwd3tjc2sdr" path="res://icon.svg" id="2_kpjcp"]
+[ext_resource type="Resource" uid="uid://m8kikxjg4cxp" path="res://resources/AttackSkills/대절단가로.tres" id="2_l6ohk"]
+[ext_resource type="Script" uid="uid://dst3xwqayk3b6" path="res://statcomponent.gd" id="3_kne1u"]
+[ext_resource type="Script" uid="uid://fkyd3vesxacg" path="res://script/MovementComponent.gd" id="4_e80uo"]
+[ext_resource type="Resource" uid="uid://c2qdwxl3f8it6" path="res://resources/Stats/1test.tres" id="4_hp6x6"]
+[ext_resource type="Script" uid="uid://wck7aphk04bq" path="res://Attacksystem/AttackComponent.gd" id="5_dtqjt"]
+[ext_resource type="Script" uid="uid://dyb84uk7iuh6" path="res://script/SkillComponent.gd" id="6_3tkgg"]
+[ext_resource type="Script" uid="uid://cmb3oqo8l63xu" path="res://script/InventoryComponent.gd" id="6_5ncpa"]
+[ext_resource type="Script" uid="uid://c84qonscpk4ad" path="res://script/EquipmentComponent.gd" id="7_wi0c6"]
+[ext_resource type="Script" uid="uid://dusfnr4ylo2kn" path="res://script/HealthComponent.gd" id="10_l6ohk"]
+[ext_resource type="Script" uid="uid://nreslrsxpap6" path="res://HitBoxSpawner.gd" id="13_oudfo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kne1u"]
+
+[sub_resource type="Animation" id="Animation_r3kul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oudfo"]
+resource_name = "벅벅"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.8, 0.8, 0.8), Vector3(1.2, 1.2, 1.2)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"attack_hit"
+}, {
+"args": [],
+"method": &"attack_end"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d6rpx"]
+_data = {
+&"RESET": SubResource("Animation_r3kul"),
+&"벅벅": SubResource("Animation_oudfo")
+}
+
+[node name="Player" type="CharacterBody3D" unique_id=638737757]
+script = ExtResource("1_kpjcp")
+current_attack = ExtResource("2_l6ohk")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1016910760]
+texture = ExtResource("2_kpjcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=687023117]
+shape = SubResource("BoxShape3D_kne1u")
+
+[node name="StatComponent" type="Node" parent="." unique_id=461710717]
+script = ExtResource("3_kne1u")
+base_stat = ExtResource("4_hp6x6")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=552064339]
+script = ExtResource("4_e80uo")
+
+[node name="SkillComponent" type="Node" parent="." unique_id=1066216115 node_paths=PackedStringArray("stat_component", "attack_component")]
+script = ExtResource("6_3tkgg")
+stat_component = NodePath("../StatComponent")
+attack_component = NodePath("../AttackComponent")
+
+[node name="HitBoxSpawner" type="Node" parent="." unique_id=103065405]
+script = ExtResource("13_oudfo")
+
+[node name="AttackComponent" type="Node" parent="." unique_id=1007135096 node_paths=PackedStringArray("stat_component", "hitbox_spawner")]
+script = ExtResource("5_dtqjt")
+stat_component = NodePath("../StatComponent")
+hitbox_spawner = NodePath("../HitBoxSpawner")
+metadata/_custom_type_script = "uid://wck7aphk04bq"
+
+[node name="InventoryComponent" type="Node" parent="." unique_id=1063774489]
+script = ExtResource("6_5ncpa")
+metadata/_custom_type_script = "uid://cmb3oqo8l63xu"
+
+[node name="EquipmentComponent" type="Node" parent="." unique_id=498871564 node_paths=PackedStringArray("stat_component")]
+script = ExtResource("7_wi0c6")
+stat_component = NodePath("../StatComponent")
+metadata/_custom_type_script = "uid://c84qonscpk4ad"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1367638499 node_paths=PackedStringArray("stat_component")]
+script = ExtResource("10_l6ohk")
+stat_component = NodePath("../StatComponent")
+metadata/_custom_type_script = "uid://dusfnr4ylo2kn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1799273751]
+libraries/ = SubResource("AnimationLibrary_d6rpx")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1898949208]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1569683810]
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 2, 5)
